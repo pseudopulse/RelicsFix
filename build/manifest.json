@@ -1,0 +1,10 @@
+{
+	"name": "RelicsFix",
+	"version_number": "1.0.0",
+	"website_url": "",
+	"description": "Patches Forgotten Relics to make it work after AC. Requires you actually have Forgotten Relics installed.",
+	"dependencies": [
+		"bbepis-BepInExPack-5.4.2121",
+		"PlasmaCore3-Forgotten_Relics-1.1.30"
+	]
+}

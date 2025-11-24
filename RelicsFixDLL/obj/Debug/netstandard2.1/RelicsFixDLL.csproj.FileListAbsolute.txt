@@ -1,0 +1,10 @@
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.csproj.AssemblyReference.cache
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.GeneratedMSBuildEditorConfig.editorconfig
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.AssemblyInfoInputs.cache
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.AssemblyInfo.cs
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.csproj.CoreCompileInputs.cache
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/bin/Debug/netstandard2.1/RelicsFixDLL.deps.json
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/bin/Debug/netstandard2.1/RelicsFixDLL.dll
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/bin/Debug/netstandard2.1/RelicsFixDLL.pdb
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.dll
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.pdb

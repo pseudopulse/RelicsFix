@@ -1,0 +1,11 @@
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/obj/Debug/netstandard2.1/SeekersPatcherDLL.csproj.AssemblyReference.cache
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/obj/Debug/netstandard2.1/SeekersPatcherDLL.GeneratedMSBuildEditorConfig.editorconfig
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/obj/Debug/netstandard2.1/SeekersPatcherDLL.AssemblyInfoInputs.cache
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/obj/Debug/netstandard2.1/SeekersPatcherDLL.AssemblyInfo.cs
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/obj/Debug/netstandard2.1/SeekersPatcherDLL.csproj.CoreCompileInputs.cache
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/obj/Debug/netstandard2.1/SeekersPatcherDLL.sourcelink.json
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/bin/Debug/netstandard2.1/SeekersPatcherDLL.deps.json
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/bin/Debug/netstandard2.1/SeekersPatcherDLL.dll
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/bin/Debug/netstandard2.1/SeekersPatcherDLL.pdb
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/obj/Debug/netstandard2.1/SeekersPatcherDLL.dll
+/home/pseudopulse/Repos/SeekersPatcher/SeekersPatcherDLL/obj/Debug/netstandard2.1/SeekersPatcherDLL.pdb

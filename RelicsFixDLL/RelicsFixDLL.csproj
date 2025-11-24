@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>netstandard2.1</TargetFramework>
+      <LangVersion>preview</LangVersion>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+  
+    <ItemGroup>
+      <Compile Remove="libs\**" />
+      <EmbeddedResource Remove="libs\**" />
+      <None Remove="libs\**" />
+    </ItemGroup>
+  
+    <ItemGroup>
+    <PackageReference Include="RiskOfRain2.GameLibs" Version="1.4.0-r.0" />
+      <PackageReference Include="BepInEx.Analyzers" Version="1.0.*">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="BepInEx.Core" Version="5.4.21" />
+      <PackageReference Include="UnityEngine.Modules" Version="2021.3.33">
+        <IncludeAssets>compile</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="FHCSharp.dll" Publicize="true">
+        <HintPath>libs/FHCSharp.dll</HintPath>
+        <Private>false</Private>
+      </Reference>
+    </ItemGroup>
+  
+  </Project>
