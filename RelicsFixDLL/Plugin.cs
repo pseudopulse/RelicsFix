@@ -35,7 +35,7 @@ namespace RelicsFixDLL
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "_0pseudopulse";
         public const string PluginName = "_0RelicsFixDLL";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.1";
         public static BepInEx.Logging.ManualLogSource ModLogger;
         public static MethodInfo ItemDisplayRuleSet_Init;
         //
@@ -68,21 +68,20 @@ namespace RelicsFixDLL
         }
 
         private static void RebuildCards(Action<ClassicStageInfo, DirectorCardCategorySelection, DirectorCardCategorySelection> orig, ClassicStageInfo self, DirectorCardCategorySelection p1, DirectorCardCategorySelection p2) {
-            if (!BasinDCCS) {
-                BuildMonsterDCCS();
-            }
-
             string scene = SceneManager.GetActiveScene().name;
             switch (scene) {
                 case "drybasin":
+                    BuildMonsterDCCS();
                     self.monsterDccsPool = BasinDCCS;
                     self.interactableDccsPool = Utils.Assets.DccsPool.dpGooLakeInteractables;
                     break;
                 case "slumberingsatellite":
+                    BuildMonsterDCCS();
                     self.monsterDccsPool = SatelliteDCCS;
                     self.interactableDccsPool = SatelliteInteractDCCS;
                     break;
                 case "forgottenhaven":
+                    BuildMonsterDCCS();
                     self.monsterDccsPool = HavenDCCS;
                     self.interactableDccsPool = HavenInteractDCCS;
                     break;
@@ -92,8 +91,8 @@ namespace RelicsFixDLL
         }
 
         private static void BuildMonsterDCCS() {
-            BasinDCCS = ScriptableObject.CreateInstance<DccsPool>();
-            SetupDCCSEnemy(BasinDCCS, Utils.Assets.DirectorCardCategorySelection.dccsGooLakeMonstersDLC3, null, Utils.Assets.DirectorCardCategorySelection.dccsGooLakeMonstersDLC1, Utils.Assets.DirectorCardCategorySelection.dccsGooLakeMonsters);
+            BasinDCCS = Utils.Assets.DccsPool.dpGooLakeMonsters;
+            SetupDCCSEnemy(BasinDCCS, Utils.Assets.DirectorCardCategorySelection.dccsGooLakeMonstersDLC3, Utils.Assets.DirectorCardCategorySelection.dccsGooLakeMonsters, Utils.Assets.DirectorCardCategorySelection.dccsGooLakeMonstersDLC1, Utils.Assets.DirectorCardCategorySelection.dccsGooLakeMonsters);
             AddFamily(BasinDCCS, Utils.Assets.FamilyDirectorCardCategorySelection.dccsGolemFamilySandy, 2);
             AddFamily(BasinDCCS, Utils.Assets.FamilyDirectorCardCategorySelection.dccsWispFamily, 3);
             AddFamily(BasinDCCS, Utils.Assets.FamilyDirectorCardCategorySelection.dccsImpFamily, 1);
@@ -128,6 +127,53 @@ namespace RelicsFixDLL
                 dccs = VF2ContentPackProvider.bundle.LoadAsset<DirectorCardCategorySelection>("iccsVF2.asset"),
                 weight = 1f
             });
+
+            EnsureNoNullCards(BasinDCCS);
+            EnsureNoNullCards(SatelliteDCCS);
+            EnsureNoNullCards(HavenDCCS);
+        }
+
+        private static void EnsureNoNullCards(DccsPool pool) {
+            var cat = pool.poolCategories[0];
+            LoopPoolEntry(cat.alwaysIncluded);
+            LoopPoolEntry(cat.includedIfNoConditionsMet);
+            LoopConditionalPoolEntry(cat.includedIfConditionsMet);
+
+            void LoopPoolEntry(DccsPool.PoolEntry[] entries) {
+                if (entries == null) {
+                    Debug.Log("skipping entry");
+                    return;
+                }
+                foreach (var entry in entries) {
+                    if (!entry.dccs) continue;
+                    for (int i = 0; i < entry.dccs.categories.Length; i++) {
+                        ref var cat = ref entry.dccs.categories[i];
+                        if (cat.cards != null) {
+                            List<DirectorCard> cards = cat.cards.ToList();
+                            cards.RemoveAll(x => x == null);
+                            cat.cards = cards.ToArray();
+                        }
+                    }
+                }
+            }
+
+            void LoopConditionalPoolEntry(DccsPool.ConditionalPoolEntry[] entries) {
+                if (entries == null) {
+                    Debug.Log("skipping conditional entry");
+                    return;
+                }
+                foreach (var entry in entries) {
+                    if (!entry.dccs) continue;
+                    for (int i = 0; i < entry.dccs.categories.Length; i++) {
+                        ref var cat = ref entry.dccs.categories[i];
+                        if (cat.cards != null) {
+                            List<DirectorCard> cards = cat.cards.ToList();
+                            cards.RemoveAll(x => x == null);
+                            cat.cards = cards.ToArray();
+                        }
+                    }
+                }
+            }
         }
 
         private static void SetupDCCSEnemy(DccsPool pool, DirectorCardCategorySelection dlc3, DirectorCardCategorySelection dlc2, DirectorCardCategorySelection dlc1, DirectorCardCategorySelection none) {
@@ -139,7 +185,7 @@ namespace RelicsFixDLL
                     includedIfConditionsMet = new DccsPool.ConditionalPoolEntry[0],
                     alwaysIncluded = new DccsPool.PoolEntry[] {
                         new DccsPool.PoolEntry() {
-                            dccs = none,
+                            dccs = CloneDCCS(none),
                             weight = 1
                         }
                     }
@@ -171,7 +217,7 @@ namespace RelicsFixDLL
 
             if (dlc3) {
                 entries.Add(new() {
-                    dccs = dlc3,
+                    dccs = CloneDCCS(dlc3),
                     weight = 1f,
                     requiredExpansions = new ExpansionDef[] {
                         Utils.Assets.ExpansionDef.DLC3
@@ -181,7 +227,7 @@ namespace RelicsFixDLL
 
             if (dlc2) {
                 entries.Add(new() {
-                    dccs = dlc2,
+                    dccs = CloneDCCS(dlc2),
                     weight = 1f,
                     requiredExpansions = new ExpansionDef[] {
                         Utils.Assets.ExpansionDef.DLC2
@@ -191,7 +237,7 @@ namespace RelicsFixDLL
 
             if (dlc1) {
                 entries.Add(new() {
-                    dccs = dlc1,
+                    dccs = CloneDCCS(dlc1),
                     weight = 1f,
                     requiredExpansions = new ExpansionDef[] {
                         Utils.Assets.ExpansionDef.DLC1
@@ -200,6 +246,10 @@ namespace RelicsFixDLL
             }
 
             standard.includedIfConditionsMet = entries.ToArray();
+        }
+
+        private static DirectorCardCategorySelection CloneDCCS(DirectorCardCategorySelection dccs) {
+            return GameObject.Instantiate(dccs);
         }
 
         private static void AddFamily(DccsPool pool, DirectorCardCategorySelection dccs, float weight) {

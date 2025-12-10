@@ -8,3 +8,4 @@
 /home/pseudopulse/Repos/RelicsFix/RelicsFix/obj/Debug/netstandard2.1/RelicsFix.csproj.CoreCompileInputs.cache
 /home/pseudopulse/Repos/RelicsFix/RelicsFix/obj/Debug/netstandard2.1/RelicsFix.dll
 /home/pseudopulse/Repos/RelicsFix/RelicsFix/obj/Debug/netstandard2.1/RelicsFix.pdb
+/home/pseudopulse/Repos/RelicsFix/RelicsFix/obj/Debug/netstandard2.1/RelicsFix.sourcelink.json

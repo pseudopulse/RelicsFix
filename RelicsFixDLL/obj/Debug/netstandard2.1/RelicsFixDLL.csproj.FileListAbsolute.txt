@@ -8,3 +8,4 @@
 /home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/bin/Debug/netstandard2.1/RelicsFixDLL.pdb
 /home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.dll
 /home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.pdb
+/home/pseudopulse/Repos/RelicsFix/RelicsFixDLL/obj/Debug/netstandard2.1/RelicsFixDLL.sourcelink.json

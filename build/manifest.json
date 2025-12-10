@@ -1,7 +1,7 @@
 {
 	"name": "RelicsFix",
-	"version_number": "1.0.0",
-	"website_url": "",
+	"version_number": "1.0.1",
+	"website_url": "https://github.com/pseudopulse/RelicsFix",
 	"description": "Patches Forgotten Relics to make it work after AC. Requires you actually have Forgotten Relics installed.",
 	"dependencies": [
 		"bbepis-BepInExPack-5.4.2121",
